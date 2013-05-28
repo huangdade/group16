@@ -12,7 +12,27 @@ catch ( PDOException $e ) {
 	print( "Error connecting to SQL Server." );
 	die(print_r($e));
 }
+$sql = "select * from shop";
+?>
+<table>
+	<tr>
+		<th>id</th>
+		<th>name</th>
+		<th>address</th>
+	</tr>
+	<?php
+foreach($conn->query($sql) as $row)
+{
+	?>
+	<tr>
+		<td><?= $row['id'] ?></td>
+		<td><?= $row['name'] ?></td>
+		<td><?= $row['address'] ?></td>
+	</tr>
+	<?php
+}
 
+$conn = null;
 ?>
 </body>
 </html>
