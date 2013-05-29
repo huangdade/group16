@@ -37,7 +37,7 @@ function dispcooltea($rows)
 	?>
 	<h2>凉茶</h2>
 	<?php
-	if (!$rows)
+	if (empty($rows))
 	{
 		?>
 		<p>没有找到相关记录</p>
@@ -87,7 +87,7 @@ function disphaircut($rows)
 	?>
 	<h2>理发</h2>
 	<?php
-	if (!$rows)
+	if (empty($rows))
 	{
 		?>
 		<p>没有找到相关记录</p>
