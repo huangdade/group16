@@ -134,8 +134,8 @@ catch ( PDOException $e ) {
 /* end of connection */
 
 /* search database */
-$result['cooltea'] = searchcooltea($conn, $key);
-$result['haircut'] = searchhaircut($conn, $key);
+$result['cooltea'] = searchcooltea($conn, $key)->fetchAll();
+$result['haircut'] = searchhaircut($conn, $key)->fetchAll();
 /* end of search */
 
 /* display result in table */
