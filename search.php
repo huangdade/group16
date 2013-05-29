@@ -1,8 +1,14 @@
 <html>
 <head>
 	<title>search result</title>
+	<link rel="stylesheet" type="text/css" href="css/search.css" />
 </head>
 <body>
+<form action="search.php" method="POST">
+	<input type="text" name="key" />
+	<input type="submit" value="search" />
+</form>
+<hr />
 <?php
 function searchcooltea($conn, $key)
 {
@@ -36,41 +42,43 @@ function dispcooltea($rows)
 		?>
 		<P>没有找到相关记录</p>
 		<?php
-		return;
 	}
-	?>
-	<table>
-		<tr>
-			<th>名称</th>
-			<th>品牌</th>
-			<th>商店</th>
-			<th>价格</th>
-			<th>地址</th>
-		</tr>
-	<?php
-	foreach ($rows as $row)
+	else
 	{
 		?>
-		<tr>
-			<td><?= $row['name'] ?></td>
-			<td><?= $row['branch'] ?></td>
-			<td><?= $row['shop'] ?></td>
+		<table>
+			<tr>
+				<th>名称</th>
+				<th>品牌</th>
+				<th>商店</th>
+				<th>价格</th>
+				<th>地址</th>
+			</tr>
 		<?php
-		if (empty($row['union']))
+		foreach ($rows as $row)
 		{
 			?>
-			<td><?= $row['price'] ?>元</td>
+			<tr>
+				<td><?= $row['name'] ?></td>
+				<td><?= $row['branch'] ?></td>
+				<td><?= $row['shop'] ?></td>
 			<?php
+			if (empty($row['union']))
+			{
+				?>
+				<td><?= $row['price'] ?>元</td>
+				<?php
+			}
+			else
+			{
+				?>
+				<td><?= $row['price'] ?>元/<?= $row['unit'] ?></td>
+				<?php
+			}
+				?>
+				<td><?= $row['address'] ?></td>
+				<?php
 		}
-		else
-		{
-			?>
-			<td><?= $row['price'] ?>元/<?= $row['unit'] ?></td>
-			<?php
-		}
-			?>
-			<td><?= $row['address'] ?></td>
-			<?php
 	}
 }
 
@@ -84,27 +92,29 @@ function disphaircut($rows)
 		?>
 		<P>没有找到相关记录</p>
 		<?php
-		return;
 	}
-	?>
-	<table>
-		<tr>
-			<th>名称</th>
-			<th>商店</th>
-			<th>价格</th>
-			<th>地址</th>
-		</tr>
-	<?php
-	foreach($rows as $row)
+	else
 	{
 		?>
-		<tr>
-			<td><?= $row['name'] ?></td>
-			<td><?= $row['shop'] ?></td>
-			<td><?= $row['price'] ?></td>
-			<td><?= $row['address'] ?></td>
-		</tr>
+		<table>
+			<tr>
+				<th>名称</th>
+				<th>商店</th>
+				<th>价格</th>
+				<th>地址</th>
+			</tr>
 		<?php
+		foreach($rows as $row)
+		{
+			?>
+			<tr>
+				<td><?= $row['name'] ?></td>
+				<td><?= $row['shop'] ?></td>
+				<td><?= $row['price'] ?></td>
+				<td><?= $row['address'] ?></td>
+			</tr>
+			<?php
+		}
 	}
 }
 ?>
