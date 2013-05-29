@@ -39,8 +39,25 @@ form {
 	padding: 50px 0px 0px 0px;
 	text-align: center;
 	}
-	
-#form-center input {
-	vertical-align: middle;
+
+#search-bar input[type="text"] {
+	font-size: 120%;
+	width: 400px;
+	margin: 0px 20px 0px 0px;
+	padding: 2px 4px 2px 4px;
+	border-radius: 0px;
+	border: 1px solid silver;
+	display: block;
+	}
+		
+#form-center input[type="submit"] {
+	width: 80px;
+	padding: 2px 4px 2px 4px;
+	font-size: 120%;
+	background-color: #0099CC;
+	color: white;
+	border-radius: 0px;
+	border: 0px;
+	display: block;
 	}
 	
