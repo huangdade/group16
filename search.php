@@ -4,18 +4,114 @@
 </head>
 <body>
 <?php
+function searchcooltea($conn, $key)
+{
+	$sql = "select c.name as name, c.branch as branch, sh.name as shop, sh.address as address, s.price as price, s.unit as unit
+		from store s
+			left join cooltea c on s.goods = c.id
+			left join shop sh on s.shop = sh.id
+		where c.name like N'%" . $key . "%' or
+			c.branch like N'%" . $key . "%' or
+			c.description like N'%" . $key . "%';";
+	return $conn->query($sql);
+}
 
-$key = $_POST['key'];
-/*init all sqls*/
-$goods_kinds[0] = "cooltea";
-$goods_kinds[1] = "haircut";
-$sqls_id[$goods_kinds[0]] = "select t.id from cooltea t where t.name like N'%" . $key . "%' or t.branch like N'%" . $key . "%' or t.description like N'" . $key . "%';";
-$sqls_id[$goods_kinds[1]] = "select h.id from haircut h where h.type like N'%" . $key . "%';";
+function searchhaircut($conn, $key)
+{
+	$sql = "select h.type as name, sh.name as shop, sh.address as address, s.price as price
+		from store s
+			left join haircut h on s.goods = h.id
+			left join shop sh on s.shop = sh.id
+		where h.type like N'%" . $key . "%';";
+	return $conn->query($sql);
+}
 
-/* to add more ... */
+function dispcooltea($rows)
+{
+	?>
+	<h2>凉茶</h2>
+	<?php
+	if (!$rows)
+	{
+		?>
+		<P>没有找到相关记录</p>
+		<?php
+		return;
+	}
+	?>
+	<table>
+		<tr>
+			<th>名称</th>
+			<th>品牌</th>
+			<th>商店</th>
+			<th>价格</th>
+			<th>地址</th>
+		</tr>
+	<?php
+	foreach ($rows as $row)
+	{
+		?>
+		<tr>
+			<td><?= $row['name'] ?></td>
+			<td><?= $row['branch'] ?></td>
+			<td><?= $row['shop'] ?></td>
+		<?php
+		if (empty($row['union']))
+		{
+			?>
+			<td><?= $row['price'] ?>元</td>
+			<?php
+		}
+		else
+		{
+			?>
+			<td><?= $row['price'] ?>元/<?= $row['unit'] ?></td>
+			<?php
+		}
+			?>
+			<td><?= $row['address'] ?></td>
+			<?php
+	}
+}
 
+function disphaircut($rows)
+{
+	?>
+	<h2>理发</h2>
+	<?php
+	if (!$rows)
+	{
+		?>
+		<P>没有找到相关记录</p>
+		<?php
+		return;
+	}
+	?>
+	<table>
+		<tr>
+			<th>名称</th>
+			<th>商店</th>
+			<th>价格</th>
+			<th>地址</th>
+		</tr>
+	<?php
+	foreach($rows as $row)
+	{
+		?>
+		<tr>
+			<td><?= $row['name'] ?></td>
+			<td><?= $row['shop'] ?></td>
+			<td><?= $row['price'] ?></td>
+			<td><?= $row['address'] ?></td>
+		</tr>
+		<?php
+	}
+}
 ?>
 <?php
+
+$key = $_POST['key'];
+
 /* connect to database */
 try {
 	$conn = new PDO("sqlsrv:server = tcp:jzcdokmf78.database.windows.net,1433; Database = goods_search_system", "common", "A0\/!a6609dsq");
@@ -27,32 +123,16 @@ catch ( PDOException $e ) {
 }
 /* end of connection */
 
-/* get id of goods and shop */
-foreach($goods_kinds as $goods_kind)
-{
-	
-
-
+/* search database */
+$result['cooltea'] = searchcooltea($conn, $key);
+$result['haircut'] = searchhaircut($conn, $key);
+/* end of search */
 
 /* display result in table */
-?>
-<table>
-	<tr>
-		<th>id</th>
-		<th>name</th>
-		<th>address</th>
-	</tr>
-	<?php
-foreach($conn->query($sql) as $row)
-{
-	?>
-	<tr>
-		<td><?= $row['id'] ?></td>
-		<td><?= $row['name'] ?></td>
-		<td><?= $row['address'] ?></td>
-	</tr>
-	<?php
-}
+dispcooltea($result['cooltea']);
+disphaircut($result['haircut']);
+/* end of display */
+
 
 $conn = null;
 ?>
