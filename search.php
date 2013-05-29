@@ -12,6 +12,7 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 /* get key word */
 $key = $_POST['key'];
 ?>
+<h1>东校区商品及服务信息查询系统</h1>
 <form action="search.php" method="POST">
 	<input type="text" name="key" value="<?= $key ?>"/>
 	<input type="submit" value="search" />
