@@ -8,7 +8,7 @@ body {
 	font-size: 120%;
 	font-weight: bold;
 	margin: 0px;
-	padding: 0px;
+	padding: 5px 0px 5px 0px;
 	background-color: black;
 	color: white;
 	}
@@ -22,7 +22,7 @@ body {
 #search-bar span {
 	font-size: 200%;
 	margin: 25px 20px 0px 20px;
-	padding: 0px;
+	vertical-align: middle;
 	color: green;
 	display: inline;
 	}
