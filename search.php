@@ -47,7 +47,8 @@ function searchhaircut($conn, $key)
 function dispcooltea($rows)
 {
 	?>
-	<h2>凉茶</h2>
+	<div class="form-card">
+		<h2>凉茶</h2>
 	<?php
 	if (empty($rows))
 	{
@@ -94,14 +95,16 @@ function dispcooltea($rows)
 		}
 		?>
 		</table>
-		<?php
+	</div>
+	<?php
 	}
 }
 
 function disphaircut($rows)
 {
 	?>
-	<h2>理发</h2>
+	<div class="form-card">
+		<h2>理发</h2>
 	<?php
 	if (empty($rows))
 	{
@@ -133,7 +136,8 @@ function disphaircut($rows)
 		}
 		?>
 		</table>
-		<?php
+	</div>
+	<?php
 	}
 }
 ?>
@@ -163,5 +167,7 @@ disphaircut($result['haircut']);
 
 $conn = null;
 ?>
+<div id="bottom-bar">
+</div>
 </body>
 </html>

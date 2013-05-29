@@ -2,6 +2,7 @@ body {
 	margin: 0px;
 	padding: 0px;
 	font-size: 16px;
+	background-color: #F0F8FF;
 	}
 	
 #top-bar {
@@ -16,6 +17,8 @@ body {
 	width: 100%;
 	height: 70px;
 	background-color: #EEEEEE;
+	border-top: 1px solid #FFFFFF;
+	border-bottom: 1px solid #CCCCCC;
 	}
 	
 #search-bar span {
@@ -50,21 +53,47 @@ body {
 	border-radius: 0px;
 	border: 0px;
 	}
+
+hr {
+	color: #FFFFFF;
+	}
+	
+.form-card {
+	width: 50%;
+	margin: 20px 0px 20px 180px;
+	padding: 0px 0px 20px 20px;
+	border: 1px solid #BBBBBB;
+	background-color: #EEFFEE;
+	}
 	
 h2 {
 	}
   
 table {
-	margin: 0px 0px 0px 80px;
-	border: 1px solid black;
+	border: 1px solid #AAAAAA;
 	border-collapse: collapse;
+	background-color: #DDEEEE;
 	}
   
 th {
-	border: 1px solid black;
+	padding: 2px 0px 2px 0px;
+	border: 1px solid #AAAAAA;
 	}
 
 td {
-	border: 1px solid black;
+	padding: 2px 8px 2px 8px;
+	border: 1px solid #AAAAAA;
 	}
-  
+
+#bottom-bar {
+	position: absolute;
+	width: 100%;
+	height: 16px;
+	left: 0%;
+	top: 100%;
+	margin-left: 0px;
+	margin-top: -16px;
+	background-color: #CCEEEE;
+	border-top: 1px solid #BBBBBB;
+	}
+	
