@@ -32,6 +32,8 @@ body {
 	}
 	
 #search-bar input[type="text"] {
+	height: 120%;
+	font-size: 120%;
 	size: 100;
 	}
 
