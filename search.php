@@ -4,7 +4,7 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 	<title>search result</title>
-	<meta http-equiv="charset" content="gb2312"/>
+	<meta http-equiv="charset" content="utf-8"/>
 	<link rel="stylesheet" type="text/css" href="css/search.css" />
 </head>
 <body>
