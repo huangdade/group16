@@ -1,4 +1,9 @@
+body {
+	font-size: 16px;
+	}
+
 h1 {
+	font-size: 250%;
 	margin: auto;
 	text-align: center;
 	}
@@ -16,4 +21,26 @@ td {
 	border: 1px solid black;
 	}
 
-
+form {
+	margin: auto;
+	}
+	
+#search-center {
+	position: absolute;
+	width: 600px;
+	height: 400px;
+	left: 50%;
+	top: 50%;
+	margin-left: -300px;
+	margin-top: -200px;
+	}
+	
+#form-center {
+	padding: 50px 0px 0px 0px;
+	text-align: center;
+	}
+	
+#form-center input {
+	vertical-align: middle;
+	}
+	

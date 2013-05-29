@@ -3,7 +3,7 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-	<title>search result</title>
+	<title>sysu search</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<link rel="stylesheet" type="text/css" href="css/search.css" />
 </head>
@@ -12,11 +12,14 @@ PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 /* get key word */
 $key = $_POST['key'];
 ?>
-<h1>东校区商品及服务信息查询系统</h1>
-<form action="search.php" method="POST">
-	<input type="text" name="key" value="<?= $key ?>"/>
-	<input type="submit" value="search" />
-</form>
+<h1 id="top-bar">东校区商品及服务信息查询系统</h1>
+<div id="search-bar">
+	<span>Sysu Search</span>
+	<form action="search.php" method="POST">
+		<input type="text" name="key" value="<?= $key ?>"/>
+		<input type="submit" value="search" />
+	</form>
+</div>
 <hr />
 <?php
 function searchcooltea($conn, $key)
