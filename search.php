@@ -19,7 +19,7 @@ function searchcooltea($conn, $key)
 		where c.name like N'%" . $key . "%' or
 			c.branch like N'%" . $key . "%' or
 			c.description like N'%" . $key . "%';";
-	return $conn->query($sql);
+	return ($conn->query($sql))->fetchAll();
 }
 
 function searchhaircut($conn, $key)
@@ -29,7 +29,7 @@ function searchhaircut($conn, $key)
 			left join haircut h on s.goods = h.id
 			left join shop sh on s.shop = sh.id
 		where h.type like N'%" . $key . "%';";
-	return $conn->query($sql);
+	return ($conn->query($sql))->fetchAll();
 }
 
 function dispcooltea($rows)
@@ -37,10 +37,10 @@ function dispcooltea($rows)
 	?>
 	<h2>凉茶</h2>
 	<?php
-	if (!$rows)
+	if (empty($rows))
 	{
 		?>
-		<P>没有找到相关记录</p>
+		<p>没有找到相关记录</p>
 		<?php
 	}
 	else
@@ -87,10 +87,10 @@ function disphaircut($rows)
 	?>
 	<h2>理发</h2>
 	<?php
-	if (!$rows)
+	if (empty($rows))
 	{
 		?>
-		<P>没有找到相关记录</p>
+		<p>没有找到相关记录</p>
 		<?php
 	}
 	else
