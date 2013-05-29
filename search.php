@@ -139,8 +139,8 @@ $result['haircut'] = searchhaircut($conn, $key)->fetchAll();
 /* end of search */
 
 /* display result in table */
-disphaircut($result['haircut']);
 dispcooltea($result['cooltea']);
+disphaircut($result['haircut']);
 /* end of display */
 
 
