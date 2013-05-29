@@ -139,8 +139,8 @@ $result['haircut'] = searchhaircut($conn, $key);
 /* end of search */
 
 /* display result in table */
-dispcooltea($result['cooltea']);
 disphaircut($result['haircut']);
+dispcooltea($result['cooltea']);
 /* end of display */
 
 
