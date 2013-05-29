@@ -59,8 +59,7 @@ hr {
 	}
 	
 .form-card {
-	width: 50%;
-	margin: 20px 0px 20px 180px;
+	margin: 20px 180px 20px 180px;
 	padding: 0px 0px 20px 20px;
 	border: 1px solid #BBBBBB;
 	background-color: #EEFFEE;
@@ -86,7 +85,7 @@ td {
 	}
 
 #bottom-bar {
-	position: absolute;
+	position: fixed;
 	width: 100%;
 	height: 16px;
 	left: 0%;
