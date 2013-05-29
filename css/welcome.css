@@ -40,7 +40,7 @@ form {
 	text-align: center;
 	}
 
-#search-bar input[type="text"] {
+#form-center input[type="text"] {
 	font-size: 120%;
 	width: 400px;
 	margin: 0px 20px 0px 0px;
