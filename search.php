@@ -4,8 +4,12 @@
 	<link rel="stylesheet" type="text/css" href="css/search.css" />
 </head>
 <body>
+<?php
+/* get key word */
+$key = $_POST['key'];
+?>
 <form action="search.php" method="POST">
-	<input type="text" name="key" />
+	<input type="text" name="key" value="<?= $key ?>"/>
 	<input type="submit" value="search" />
 </form>
 <hr />
@@ -126,8 +130,6 @@ function disphaircut($rows)
 }
 ?>
 <?php
-
-$key = $_POST['key'];
 
 /* connect to database */
 try {
