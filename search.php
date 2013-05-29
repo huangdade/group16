@@ -77,8 +77,12 @@ function dispcooltea($rows)
 			}
 				?>
 				<td><?= $row['address'] ?></td>
-				<?php
+			</tr>
+			<?php
 		}
+		?>
+		</table>
+		<?php
 	}
 }
 
@@ -115,6 +119,9 @@ function disphaircut($rows)
 			</tr>
 			<?php
 		}
+		?>
+		</table>
+		<?php
 	}
 }
 ?>
@@ -139,8 +146,8 @@ $result['haircut'] = searchhaircut($conn, $key)->fetchAll();
 /* end of search */
 
 /* display result in table */
-disphaircut($result['haircut']);
 dispcooltea($result['cooltea']);
+disphaircut($result['haircut']);
 /* end of display */
 
 
