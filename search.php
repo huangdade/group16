@@ -69,7 +69,7 @@ function dispcooltea($rows)
 				<td><?= $row['branch'] ?></td>
 				<td><?= $row['shop'] ?></td>
 			<?php
-			if (empty($row['union']))
+			if (empty($row['unit']))
 			{
 				?>
 				<td><?= $row['price'] ?>元</td>
