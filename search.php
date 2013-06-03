@@ -47,7 +47,7 @@ function searchhaircut($conn, $key)
 function searchcolddrink($conn, $key)
 {
 	$sql = "select c.name as name, c.type as type, sh.shop as shop, sh.address as address, s.price as price, s.unit as unit
-		form store s
+		from store s
 			left join colddrink c on s.goods = c.id
 			left join shop sh on s.shop = sh.id
 		where c.name like N'%" . $key . "%' or
