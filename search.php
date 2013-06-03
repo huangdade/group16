@@ -217,7 +217,7 @@ try {
 	$conn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
 }
 catch ( PDOException $e ) {
-	print( "Error connecting to SQL Server." );
+	echo "Error connecting to SQL Server.";
 	die(print_r($e));
 }
 /* end of connection */
