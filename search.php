@@ -65,6 +65,7 @@ function dispcooltea($rows)
 	{
 		?>
 		<p>没有找到相关记录</p>
+	</div>
 		<?php
 	}
 	else
@@ -121,6 +122,7 @@ function disphaircut($rows)
 	{
 		?>
 		<p>没有找到相关记录</p>
+	</div>
 		<?php
 	}
 	else
@@ -162,6 +164,7 @@ function dispcolddrink($rows)
 	{
 		?>
 		<p>没有找到相关记录</p>
+	</div>
 		<?php
 	}
 	else
