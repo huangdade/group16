@@ -44,6 +44,17 @@ function searchhaircut($conn, $key)
 	return $conn->query($sql);
 }
 
+function searchcolddrink($conn, $key)
+{
+	$sql = "select c.name as name, c.type as type, sh.shop as shop, sh.address as address, s.price as price, s.unit as unit
+		form store s
+			left join colddrink c on s.goods = c.id
+			left join shop sh on s.shop = sh.id
+		where c.name like N'%" . $key . "%' or
+			c.type like N'%" . $key . "%';";
+	return $conn->query($sql);
+}
+
 function dispcooltea($rows)
 {
 	?>
@@ -140,6 +151,63 @@ function disphaircut($rows)
 	<?php
 	}
 }
+
+function dispcolddrink($rows)
+{
+	?>
+	<div class="form-card">
+		<h2>冷饮</h2>
+	<?php
+	if (empty($rows))
+	{
+		?>
+		<p>没有找到相关记录</p>
+		<?php
+	}
+	else
+	{
+		?>
+		<table>
+			<tr>
+				<th>名称</th>
+				<th>系列</th>
+				<th>商店</th>
+				<th>价格</th>
+				<th>地址</th>
+			</tr>
+		<?php
+		foreach ($rows as $row)
+		{
+			?>
+			<tr>
+				<td><?= $row['name'] ?></td>
+				<td><?= $row['type'] ?></td>
+				<td><?= $row['shop'] ?></td>
+			<?php
+			if (empty($row['unit']))
+			{
+				?>
+				<td><?= $row['price'] ?>元</td>
+				<?php
+			}
+			else
+			{
+				?>
+				<td><?= $row['price'] ?>元/<?= $row['unit'] ?></td>
+				<?php
+			}
+				?>
+				<td><?= $row['address'] ?></td>
+			</tr>
+			<?php
+		}
+		?>
+		</table>
+	</div>
+	<?php
+	}
+}
+
 ?>
 <?php
 
@@ -157,11 +225,13 @@ catch ( PDOException $e ) {
 /* search database */
 $result['cooltea'] = searchcooltea($conn, $key)->fetchAll();
 $result['haircut'] = searchhaircut($conn, $key)->fetchAll();
+$result['colddrink'] = searchcolddrink($conn, $key)->fetchAll();
 /* end of search */
 
 /* display result in table */
 dispcooltea($result['cooltea']);
 disphaircut($result['haircut']);
+dispcolddrink($result['colddrink']);
 /* end of display */
 
 
